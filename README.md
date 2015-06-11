@@ -6,6 +6,8 @@
 
 *Copay* is an easy-to-use, open-source, multiplatform, multisignature, secure bitcoin wallet platform for both  individuals and companies. 
 
+Forked by getplank.
+
 *Copay* uses Bitcore-Wallet-Service (https://github.com/bitpay/bitcore-wallet-service) for peer synchronization and bitcore network interfacing. 
 
 ## Before you start
