@@ -12,12 +12,19 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.4\n"
 
+#: public/views/walletHome.html
+msgid "(possible double spend)"
+msgstr "(二重払い可能性あり)"
+
 #: public/views/modals/txp-details.html
 msgid ""
-"* Only payment proposals created by yourself with no peer actions can be "
-"removed"
+"* A payment proposal can be deleted if 1) you are the creator, and no other "
+"copayer has signed, or 2) 24 hours have passed since the proposal was "
+"created."
 msgstr ""
-"* 自分が提案した取引で他の参加者が署名していない取引提案のみ破棄されます。"
+"* 送金の提案の取下げは①他のウォレット参加者に署名されていなかった場合、提案者"
+"に提案を取り下げることができます。②提案の起案から24時間が経っても解決しなかっ"
+"た場合、全員に取り下げることができます。"
 
 #: public/views/backup.html
 msgid ""
@@ -26,6 +33,15 @@ msgid ""
 msgstr ""
 "* 安全にバックアップを別のデバイスにインポートして、同じウォレットを複数の端"
 "末でご利用いただけます。"
+
+#: public/views/backup.html
+msgid ""
+"A backup without its private key will allow the user to see the wallet "
+"balance, transactions, and create spend proposals. However, it will not be "
+"able to approve (sign) proposals."
+msgstr ""
+"秘密鍵なしのバックアップでは、残高の確認、取引履歴の確認、送金の提案ができま"
+"す。しかし、送金の提案を承諾 (署名) できません。"
 
 #: public/views/splash.html
 msgid "A multisignature bitcoin wallet"
@@ -43,13 +59,18 @@ msgstr "承諾"
 msgid "Add wallet"
 msgstr "ウォレットを追加"
 
-#: public/views/paymentUri.html public/views/modals/paypro.html
+#: public/views/paymentUri.html public/views/modals/customized-amount.html
+#: public/views/modals/paypro.html
 msgid "Address"
 msgstr "アドレス"
 
 #: public/views/preferences.html
 msgid "Advanced"
 msgstr "上級者向け"
+
+#: public/views/disclaimer.html
+msgid "Agree"
+msgstr "同意します"
 
 #: public/views/preferencesAlias.html
 msgid "Alias for <i>{{index.walletName}}</i>"
@@ -64,11 +85,12 @@ msgid "Alternative Currency"
 msgstr "表示通貨"
 
 #: public/views/paymentUri.html public/views/walletHome.html
+#: public/views/modals/customized-amount.html
 #: public/views/modals/txp-details.html
 msgid "Amount"
 msgstr "金額"
 
-#: public/views/walletHome.html
+#: public/views/walletHome.html public/views/modals/customized-amount.html
 msgid "Amount in"
 msgstr "換算済金額"
 
@@ -118,6 +140,10 @@ msgstr ""
 "ビットコインをもらう前に、このウォレットのバックアップすることを強くおすすめ"
 "します。"
 
+#: public/views/preferences.html
+msgid "Bitcoin Network Fee Policy"
+msgstr "ビットコインネットワークの手数料設定"
+
 #: public/views/paymentUri.html
 msgid "Bitcoin URI is NOT valid!"
 msgstr "Bitcoin URI が無効です！"
@@ -125,6 +151,18 @@ msgstr "Bitcoin URI が無効です！"
 #: public/views/walletHome.html
 msgid "Bitcoin address"
 msgstr "ビットコインアドレス"
+
+#: public/views/preferencesFee.html
+msgid ""
+"Bitcoin transactions may include a fee collected by miners on the network. "
+"The higher the fee, the greater the incentive a miner has to include that "
+"transaction in a block. The ‘Emergency’ level should only be used when there "
+"is a network congestion."
+msgstr ""
+"円滑な送金をしていただくために、ビットコインの送金には少量の手数料を付けるこ"
+"とが義務付けられております。この手数料はビットコインのネットワークを運用する"
+"人たちに寄付され、より高い手数料であればより優先的にブロックに含まれ、承認さ"
+"れます。「緊急」の設定はネットワーク全体の混雑時にのみご利用下さい。"
 
 #: public/views/modals/txp-details.html
 msgid "Broadcast Payment"
@@ -170,8 +208,13 @@ msgstr "接続を確認し、やり直して下さい。"
 msgid "Choose a backup file from your computer"
 msgstr "パソコンからバックアップファイルを選択して下さい。"
 
+#: public/views/modals/wallets.html
+msgid "Choose a wallet to send funds"
+msgstr "送金元のウォレットを選択して下さい"
+
 #: public/views/includes/topbar.html public/views/modals/copayers.html
-#: public/views/modals/paypro.html public/views/modals/scanner.html
+#: public/views/modals/customized-amount.html public/views/modals/paypro.html
+#: public/views/modals/scanner.html public/views/modals/wallets.html
 msgid "Close"
 msgstr "閉じる"
 
@@ -215,7 +258,7 @@ msgstr "送金できませんでした。接続を確認し、やり直して下
 
 #: src/js/controllers/walletHome.js
 msgid ""
-"Could not connect wallet service. Check your Internet connexion and your "
+"Could not connect wallet service. Check your Internet connection and your "
 "wallet service configuration."
 msgstr ""
 "ウォレットサービスと接続できませんでした。インターネットの接続とウォレット"
@@ -260,7 +303,11 @@ msgstr "指定された拡張秘密鍵で参加できませんでした。"
 
 #: src/js/controllers/join.js
 msgid "Could not join wallet:"
-msgstr "ウォレットに参加できませんでした。"
+msgstr "ウォレットに参加できませんでした："
+
+#: src/js/controllers/walletHome.js
+msgid "Could not recognize a valid Bitcoin QR Code"
+msgstr "有効なビットコインQRコードが認識できませんでした。"
 
 #: src/js/controllers/walletHome.js
 msgid "Could not reject payment. Check you connection and try again"
@@ -330,8 +377,8 @@ msgstr "ウォレットを削除"
 msgid "Deleting payment"
 msgstr "取引削除中…"
 
-#: public/views/modals/paypro.html public/views/modals/tx-details.html
-#: public/views/modals/txp-details.html
+#: public/views/modals/customized-amount.html public/views/modals/paypro.html
+#: public/views/modals/tx-details.html public/views/modals/txp-details.html
 msgid "Details"
 msgstr "詳細"
 
@@ -344,6 +391,14 @@ msgid "Disabled"
 msgstr "無効"
 
 #: public/views/backup.html
+msgid "Do not include private key in backup"
+msgstr "バックアップに秘密鍵を含めない"
+
+#: public/views/walletHome.html
+msgid "Download CSV file"
+msgstr "CSVファイルをダウンロード"
+
+#: public/views/backup.html
 msgid "Download backup"
 msgstr "バックアップをダウンロード"
 
@@ -351,9 +406,17 @@ msgstr "バックアップをダウンロード"
 msgid "ENTER"
 msgstr "ENTER"
 
+#: src/js/controllers/preferencesFee.js
+msgid "Economy"
+msgstr "節約"
+
 #: public/views/preferences.html
 msgid "Email Notifications"
 msgstr "メールのお知らせ"
+
+#: src/js/controllers/preferencesFee.js
+msgid "Emergency"
+msgstr "緊急"
 
 #: public/views/preferences.html
 msgid "Encrypt Private Key"
@@ -381,11 +444,15 @@ msgstr "ウォレット作成時にエラー発生、インターネットの接
 
 #: src/js/services/profileService.js
 msgid "Error importing wallet:"
-msgstr "ウォレットインポート時にエラー"
+msgstr "ウォレットインポート時にエラー："
 
 #: public/views/modals/paypro.html public/views/modals/txp-details.html
 msgid "Expires"
 msgstr "有効期限："
+
+#: public/views/backup.html
+msgid "Failed to create backup"
+msgstr "バックアップに失敗しました。"
 
 #: src/js/controllers/importLegacy.js
 msgid "Failed to import wallets"
@@ -394,6 +461,10 @@ msgstr "ウォレットのインポート失敗しました"
 #: public/views/create.html
 msgid "Family vacation funds"
 msgstr "家族旅行貯金"
+
+#: public/views/modals/tx-details.html public/views/modals/txp-details.html
+msgid "Fee"
+msgstr "手数料"
 
 #. Get information of payment if using Payment Protocol
 #: src/js/controllers/walletHome.js
@@ -412,9 +483,21 @@ msgstr "着金あり"
 msgid "GET STARTED"
 msgstr "はじめよう"
 
+#: public/views/modals/customized-amount.html
+msgid "Generate QR Code"
+msgstr "QRコードを生成"
+
 #: public/views/walletHome.html
 msgid "Generate new address"
 msgstr "新規アドレスを生成"
+
+#: public/views/walletHome.html
+msgid "Generating .csv file..."
+msgstr "CSVファイル作成中…"
+
+#: public/views/modals/wallets.html
+msgid "Getting address for wallet {{selectedWalletName}} ..."
+msgstr "「{{selectedWalletName}}」のアドレスを取得中…"
 
 #: public/views/preferences.html
 msgid "Global settings"
@@ -428,7 +511,7 @@ msgstr "前に戻る"
 msgid "Have a Backup from Copay v0.9?"
 msgstr "Copay v0.9 のバックアップをお持ちですか？"
 
-#: public/views/create.html public/views/join.html
+#: public/views/backup.html public/views/create.html public/views/join.html
 msgid "Hide Advanced options"
 msgstr "詳細設定　非表示"
 
@@ -475,6 +558,10 @@ msgstr "ウォレットインポート中…"
 #: public/views/importLegacy.html
 msgid "Importing..."
 msgstr "インポート中…"
+
+#: public/views/walletHome.html
+msgid "Invalid"
+msgstr "無効"
 
 #: src/js/controllers/index.js
 msgid "Japanese"
@@ -558,10 +645,18 @@ msgid "No"
 msgstr "いいえ"
 
 #: public/views/walletHome.html
+msgid "No Private key"
+msgstr "秘密鍵なし"
+
+#: public/views/walletHome.html
 msgid "No transactions yet"
 msgstr "取引がありません"
 
-#: public/views/walletHome.html
+#: src/js/controllers/preferencesFee.js
+msgid "Normal"
+msgstr "通常"
+
+#: public/views/walletHome.html public/views/modals/customized-amount.html
 msgid "Not valid"
 msgstr "無効です"
 
@@ -698,6 +793,14 @@ msgstr "ポルトガル語"
 msgid "Preferences"
 msgstr "設定"
 
+#: src/js/controllers/preferencesFee.js
+msgid "Priority"
+msgstr "優先"
+
+#: public/views/modals/customized-amount.html
+msgid "QR Code"
+msgstr "QRコード"
+
 #: public/views/modals/scanner.html
 msgid "QR-Scanner"
 msgstr "QRコードを読み取って下さい"
@@ -737,6 +840,10 @@ msgstr "リリース情報"
 #: public/views/backup.html public/views/includes/password.html
 msgid "Repeat password"
 msgstr "パスワードを再入力"
+
+#: public/views/walletHome.html public/views/modals/customized-amount.html
+msgid "Request a specific amount"
+msgstr "指定金額を要求"
 
 #: public/views/import.html public/views/join.html
 msgid "Required"
@@ -804,6 +911,10 @@ msgstr "参加人数を選択して下さい。"
 msgid "Send"
 msgstr "送信"
 
+#: public/views/walletHome.html
+msgid "Send All"
+msgstr "全額を送金"
+
 #: public/views/backup.html public/views/preferencesLogs.html
 msgid "Send by email"
 msgstr "メールで送信"
@@ -866,7 +977,7 @@ msgstr ""
 msgid "Shared Wallet"
 msgstr "共有ウォレットに参加"
 
-#: public/views/create.html public/views/join.html
+#: public/views/backup.html public/views/create.html public/views/join.html
 msgid "Show Advanced options"
 msgstr "詳細設定　表示"
 
@@ -1020,9 +1131,18 @@ msgstr ""
 msgid "The wallet \"{{walletName}}\" was deleted"
 msgstr "ウォレット \"{{walletName}}\" が削除されました"
 
+#: public/views/paymentUri.html
+msgid "There are no wallets to make this payment"
+msgstr "送金可能なウォレットがありません"
+
 #: src/js/controllers/import.js
 msgid "There is an error in the form"
 msgstr "フォームにエラーがありました"
+
+#: public/views/modals/tx-details.html
+msgid ""
+"This transaction has become invalid; possibly due to a double spend attempt."
+msgstr "この取引が無効になりました。二重払いの可能性があります。"
 
 #: public/views/walletHome.html
 msgid ""
@@ -1131,7 +1251,7 @@ msgstr "ウォレット名"
 
 #: src/js/controllers/walletHome.js
 msgid ""
-"Wallet service timed out. Check your Internet connexion and your wallet "
+"Wallet service timed out. Check your Internet connection and your wallet "
 "service configuration."
 msgstr ""
 "ウォレットサービスがタイムアウトになりました。インターネットの接続とウォレッ"
@@ -1197,6 +1317,14 @@ msgstr "設定"
 #: public/views/walletHome.html
 msgid "too long!"
 msgstr "長すぎます！"
+
+#: public/views/preferencesFee.html
+msgid "{{fee.value}} bits per kB"
+msgstr "1キロバイト当たり {{fee.value}} bits"
+
+#: src/js/controllers/walletHome.js
+msgid "{{fee}} will be discounted for bitcoin networking fees"
+msgstr "{{fee}} のビットコインネットワーク手数料が差し引かれます。"
 
 #: src/js/controllers/importLegacy.js
 msgid ""

@@ -4,12 +4,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
+#: public/views/walletHome.html
+msgid "(possible double spend)"
+msgstr ""
+
 #: public/views/modals/txp-details.html
-msgid "* Only payment proposals created by yourself with no peer actions can be removed"
+msgid "* A payment proposal can be deleted if 1) you are the creator, and no other copayer has signed, or 2) 24 hours have passed since the proposal was created."
 msgstr ""
 
 #: public/views/backup.html
 msgid "* You can safely install your backup on another device and use your wallet from multiple devices at the same time."
+msgstr ""
+
+#: public/views/backup.html
+msgid "A backup without its private key will allow the user to see the wallet balance, transactions, and create spend proposals. However, it will not be able to approve (sign) proposals."
 msgstr ""
 
 #: public/views/splash.html
@@ -29,12 +37,17 @@ msgid "Add wallet"
 msgstr ""
 
 #: public/views/paymentUri.html
+#: public/views/modals/customized-amount.html
 #: public/views/modals/paypro.html
 msgid "Address"
 msgstr ""
 
 #: public/views/preferences.html
 msgid "Advanced"
+msgstr ""
+
+#: public/views/disclaimer.html
+msgid "Agree"
 msgstr ""
 
 #: public/views/preferencesAlias.html
@@ -51,11 +64,13 @@ msgstr ""
 
 #: public/views/paymentUri.html
 #: public/views/walletHome.html
+#: public/views/modals/customized-amount.html
 #: public/views/modals/txp-details.html
 msgid "Amount"
 msgstr ""
 
 #: public/views/walletHome.html
+#: public/views/modals/customized-amount.html
 msgid "Amount in"
 msgstr ""
 
@@ -103,12 +118,20 @@ msgstr ""
 msgid "Before receiving funds, it is highly recommended you backup your wallet keys."
 msgstr ""
 
+#: public/views/preferences.html
+msgid "Bitcoin Network Fee Policy"
+msgstr ""
+
 #: public/views/paymentUri.html
 msgid "Bitcoin URI is NOT valid!"
 msgstr ""
 
 #: public/views/walletHome.html
 msgid "Bitcoin address"
+msgstr ""
+
+#: public/views/preferencesFee.html
+msgid "Bitcoin transactions may include a fee collected by miners on the network. The higher the fee, the greater the incentive a miner has to include that transaction in a block. The ‘Emergency’ level should only be used when there is a network congestion."
 msgstr ""
 
 #: public/views/modals/txp-details.html
@@ -156,10 +179,16 @@ msgstr ""
 msgid "Choose a backup file from your computer"
 msgstr ""
 
+#: public/views/modals/wallets.html
+msgid "Choose a wallet to send funds"
+msgstr ""
+
 #: public/views/includes/topbar.html
 #: public/views/modals/copayers.html
+#: public/views/modals/customized-amount.html
 #: public/views/modals/paypro.html
 #: public/views/modals/scanner.html
+#: public/views/modals/wallets.html
 msgid "Close"
 msgstr ""
 
@@ -200,7 +229,7 @@ msgid "Could not broadcast payment. Check you connection and try again"
 msgstr ""
 
 #: src/js/controllers/walletHome.js
-msgid "Could not connect wallet service. Check your Internet connexion and your wallet service configuration."
+msgid "Could not connect wallet service. Check your Internet connection and your wallet service configuration."
 msgstr ""
 
 #: src/js/controllers/walletHome.js
@@ -241,6 +270,10 @@ msgstr ""
 
 #: src/js/controllers/join.js
 msgid "Could not join wallet:"
+msgstr ""
+
+#: src/js/controllers/walletHome.js
+msgid "Could not recognize a valid Bitcoin QR Code"
 msgstr ""
 
 #: src/js/controllers/walletHome.js
@@ -312,6 +345,7 @@ msgstr ""
 msgid "Deleting payment"
 msgstr ""
 
+#: public/views/modals/customized-amount.html
 #: public/views/modals/paypro.html
 #: public/views/modals/tx-details.html
 #: public/views/modals/txp-details.html
@@ -327,6 +361,14 @@ msgid "Disabled"
 msgstr ""
 
 #: public/views/backup.html
+msgid "Do not include private key in backup"
+msgstr ""
+
+#: public/views/walletHome.html
+msgid "Download CSV file"
+msgstr ""
+
+#: public/views/backup.html
 msgid "Download backup"
 msgstr ""
 
@@ -334,8 +376,16 @@ msgstr ""
 msgid "ENTER"
 msgstr ""
 
+#: src/js/controllers/preferencesFee.js
+msgid "Economy"
+msgstr ""
+
 #: public/views/preferences.html
 msgid "Email Notifications"
+msgstr ""
+
+#: src/js/controllers/preferencesFee.js
+msgid "Emergency"
 msgstr ""
 
 #: public/views/preferences.html
@@ -371,12 +421,21 @@ msgstr ""
 msgid "Expires"
 msgstr ""
 
+#: public/views/backup.html
+msgid "Failed to create backup"
+msgstr ""
+
 #: src/js/controllers/importLegacy.js
 msgid "Failed to import wallets"
 msgstr ""
 
 #: public/views/create.html
 msgid "Family vacation funds"
+msgstr ""
+
+#: public/views/modals/tx-details.html
+#: public/views/modals/txp-details.html
+msgid "Fee"
 msgstr ""
 
 #. Get information of payment if using Payment Protocol
@@ -396,8 +455,20 @@ msgstr ""
 msgid "GET STARTED"
 msgstr ""
 
+#: public/views/modals/customized-amount.html
+msgid "Generate QR Code"
+msgstr ""
+
 #: public/views/walletHome.html
 msgid "Generate new address"
+msgstr ""
+
+#: public/views/walletHome.html
+msgid "Generating .csv file..."
+msgstr ""
+
+#: public/views/modals/wallets.html
+msgid "Getting address for wallet {{selectedWalletName}} ..."
 msgstr ""
 
 #: public/views/preferences.html
@@ -412,6 +483,7 @@ msgstr ""
 msgid "Have a Backup from Copay v0.9?"
 msgstr ""
 
+#: public/views/backup.html
 #: public/views/create.html
 #: public/views/join.html
 msgid "Hide Advanced options"
@@ -461,6 +533,10 @@ msgstr ""
 
 #: public/views/importLegacy.html
 msgid "Importing..."
+msgstr ""
+
+#: public/views/walletHome.html
+msgid "Invalid"
 msgstr ""
 
 #: src/js/controllers/index.js
@@ -549,10 +625,19 @@ msgid "No"
 msgstr ""
 
 #: public/views/walletHome.html
-msgid "No transactions yet"
+msgid "No Private key"
 msgstr ""
 
 #: public/views/walletHome.html
+msgid "No transactions yet"
+msgstr ""
+
+#: src/js/controllers/preferencesFee.js
+msgid "Normal"
+msgstr ""
+
+#: public/views/walletHome.html
+#: public/views/modals/customized-amount.html
 msgid "Not valid"
 msgstr ""
 
@@ -690,6 +775,14 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
+#: src/js/controllers/preferencesFee.js
+msgid "Priority"
+msgstr ""
+
+#: public/views/modals/customized-amount.html
+msgid "QR Code"
+msgstr ""
+
 #: public/views/modals/scanner.html
 msgid "QR-Scanner"
 msgstr ""
@@ -729,6 +822,11 @@ msgstr ""
 #: public/views/backup.html
 #: public/views/includes/password.html
 msgid "Repeat password"
+msgstr ""
+
+#: public/views/walletHome.html
+#: public/views/modals/customized-amount.html
+msgid "Request a specific amount"
 msgstr ""
 
 #: public/views/import.html
@@ -800,6 +898,10 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
+#: public/views/walletHome.html
+msgid "Send All"
+msgstr ""
+
 #: public/views/backup.html
 #: public/views/preferencesLogs.html
 msgid "Send by email"
@@ -849,6 +951,7 @@ msgstr ""
 msgid "Shared Wallet"
 msgstr ""
 
+#: public/views/backup.html
 #: public/views/create.html
 #: public/views/join.html
 msgid "Show Advanced options"
@@ -914,8 +1017,16 @@ msgstr ""
 msgid "The wallet \"{{walletName}}\" was deleted"
 msgstr ""
 
+#: public/views/paymentUri.html
+msgid "There are no wallets to make this payment"
+msgstr ""
+
 #: src/js/controllers/import.js
 msgid "There is an error in the form"
+msgstr ""
+
+#: public/views/modals/tx-details.html
+msgid "This transaction has become invalid; possibly due to a double spend attempt."
 msgstr ""
 
 #: public/views/walletHome.html
@@ -1023,7 +1134,7 @@ msgid "Wallet name"
 msgstr ""
 
 #: src/js/controllers/walletHome.js
-msgid "Wallet service timed out. Check your Internet connexion and your wallet service configuration."
+msgid "Wallet service timed out. Check your Internet connection and your wallet service configuration."
 msgstr ""
 
 #: public/views/preferencesDeleteWallet.html
@@ -1088,6 +1199,14 @@ msgstr ""
 
 #: public/views/walletHome.html
 msgid "too long!"
+msgstr ""
+
+#: public/views/preferencesFee.html
+msgid "{{fee.value}} bits per kB"
+msgstr ""
+
+#: src/js/controllers/walletHome.js
+msgid "{{fee}} will be discounted for bitcoin networking fees"
 msgstr ""
 
 #: src/js/controllers/importLegacy.js
